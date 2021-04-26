@@ -1,0 +1,338 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="LinkConfigurationParameters" this:LinkConfigurationParameters.TimeOutS="30000" this:LinkConfigurationParameters.BandaVoce="OLO" this:LinkConfigurationParameters.BandaDati="OLO" this:LinkConfigurationParameters.TimeOutM="60000" this:LinkConfigurationParameters.SelectTypeLinePDA="False" this:LinkConfigurationParameters.SelectPrefixAndPhoneLine="True" this:LinkConfigurationParameters.Prefix="0984" this:LinkConfigurationParameters.PhoneLine="932946"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:this="clr-namespace:"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="TimeOutS" Type="InArgument(x:Int32)" />
+    <x:Property Name="BandaVoce" Type="InArgument(x:String)" />
+    <x:Property Name="BandaDati" Type="InArgument(x:String)" />
+    <x:Property Name="TimeOutM" Type="InArgument(x:Int32)" />
+    <x:Property Name="SelectTypeLinePDA" Type="InArgument(x:Boolean)" />
+    <x:Property Name="TypeLinePDA" Type="InArgument(x:String)" />
+    <x:Property Name="SelectPrefixAndPhoneLine" Type="InArgument(x:Boolean)" />
+    <x:Property Name="Prefix" Type="InArgument(x:String)" />
+    <x:Property Name="PhoneLine" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>LinkConfigurationParameters_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Description: &#xA;Set field &quot;Banda Dati&quot; and &quot;Banda Voce&quot; analyzing the parameters from NTP, If SelectPrefixAndPhoneLine is setted to True robot will set in siebel prefisso and Numero Linea/Directory Number&#xA;&#xA;Pre Condition: &#xA;The Page &quot;LINK Consumer&quot; is open. The coverage has already been checked, the type offer is &quot;Vodafone one Pro&quot; and the 1.1 is &quot;Link - consumer&quot;&#xA;&#xA;Post Condition:&#xA;Configuration of &quot;Link Consumer&quot; is open" DisplayName="LinkConfigurationParameters" sap2010:WorkflowViewState.IdRef="Sequence_4">
+    <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Start LinkConfiguration_Parameters&quot;]" />
+    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'SiebelCal Page'" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="10472ed14a8cded8f09b4690f954bd48" Selector="&lt;html app='internet explorer.exe' isremoteapp='1' title='Siebel*' /&gt;">
+      <ui:WindowScope.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Boolean" Name="existsLink" />
+              <Variable x:TypeArguments="x:String" Name="bandaVoceOut" />
+              <Variable x:TypeArguments="x:String" Name="bandaDatiOut" />
+              <Variable x:TypeArguments="ui:UiElement" Name="foundElement" />
+            </Sequence.Variables>
+            <ui:UiElementExists DisplayName="Element Exists 'SPAN  CxObjName'" Exists="[existsLink]" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+              <ui:UiElementExists.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="a2d7656664c120fdeb2956ba83f43546" Selector="&lt;webctrl idx='5' parentid='cxStd' tag='B' /&gt;" TimeoutMS="[TimeOutS]" WaitForReady="INTERACTIVE" />
+              </ui:UiElementExists.Target>
+            </ui:UiElementExists>
+            <ui:CheckTrue DisplayName="Check True" ErrorMessage="Page has not been loaded" Expression="[existsLink]" sap2010:WorkflowViewState.IdRef="CheckTrue_1" />
+            <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;page has been loaded&quot;]" />
+            <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Analyzing the banda voce and banda dati to set&quot;]" />
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_9">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[bandaDatiOut]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[BandaDati.Trim]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_10">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[bandaVoceOut]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[BandaVoce.Trim]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Sequence DisplayName="Set Banda Dati and Banda Voce" sap2010:WorkflowViewState.IdRef="Sequence_2">
+              <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Item Banda voce " sap2010:WorkflowViewState.IdRef="SelectItem_1" Item="[bandaVoceOut]">
+                <ui:SelectItem.Items>
+                  <scg:List x:TypeArguments="x:String" Capacity="4">
+                    <x:String>-</x:String>
+                    <x:String>Telecom Italia</x:String>
+                    <x:String>OLO</x:String>
+                    <x:String>Non Attiva</x:String>
+                  </scg:List>
+                </ui:SelectItem.Items>
+                <ui:SelectItem.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="fab8a80ed54a39a3cd42c5959d885e0a" Selector="&lt;webctrl id='1-*`^~[ATTR[~^`1-XMI91`^~[DOMAINSELECT' tag='SELECT' /&gt;" TimeoutMS="[TimeOutM]" WaitForReady="INTERACTIVE" />
+                </ui:SelectItem.Target>
+              </ui:SelectItem>
+              <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Item Banda Dati" sap2010:WorkflowViewState.IdRef="SelectItem_2" Item="[bandaDatiOut]">
+                <ui:SelectItem.Items>
+                  <scg:List x:TypeArguments="x:String" Capacity="4">
+                    <x:String>-</x:String>
+                    <x:String>Telecom Italia</x:String>
+                    <x:String>OLO</x:String>
+                    <x:String>Non Attiva</x:String>
+                  </scg:List>
+                </ui:SelectItem.Items>
+                <ui:SelectItem.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="e272c4bfeede4aa5866b076e5a38f9a9" Selector="&lt;webctrl id='1-*`^~[ATTR[~^`1-XMI90`^~[DOMAINSELECT' tag='SELECT' /&gt;" WaitForReady="COMPLETE" />
+                </ui:SelectItem.Target>
+              </ui:SelectItem>
+              <If Condition="[SelectTypeLinePDA=True]" sap2010:WorkflowViewState.IdRef="If_1">
+                <If.Then>
+                  <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="SeT Tipo linea PDA" sap2010:WorkflowViewState.IdRef="SelectItem_3" Item="[TypeLinePDA.Trim]">
+                    <ui:SelectItem.Items>
+                      <scg:List x:TypeArguments="x:String" Capacity="8">
+                        <x:String>-</x:String>
+                        <x:String>MONONUMERO POTS</x:String>
+                        <x:String>MONONUMERO/MULTINUMERO ISDN</x:String>
+                        <x:String>Selezionare un valore</x:String>
+                        <x:String>MULTINUMERO RA</x:String>
+                      </scg:List>
+                    </ui:SelectItem.Items>
+                    <ui:SelectItem.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="d4517bb95dd1fcd7e7c33f20d2fc2564" Selector="&lt;webctrl id='1-*`^~[ATTR[~^`1-37TUB`^~[DOMAINSELECT' tag='SELECT' /&gt;" WaitForReady="INTERACTIVE" />
+                    </ui:SelectItem.Target>
+                  </ui:SelectItem>
+                </If.Then>
+              </If>
+              <If Condition="[SelectPrefixAndPhoneLine=True]" sap2010:WorkflowViewState.IdRef="If_2">
+                <If.Then>
+                  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_5">
+                    <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;prefix and phone line to fill in&quot;]" />
+                    <ui:AnchorBase AnchorPosition="Auto" DisplayName="Anchor Base" sap2010:WorkflowViewState.IdRef="AnchorBase_1">
+                      <ui:AnchorBase.Action>
+                        <ActivityAction x:TypeArguments="ui:Anchor">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="ui:Anchor" Name="ContextAnchor" />
+                          </ActivityAction.Argument>
+                          <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type Into 'TD'" EmptyField="True" sap2010:WorkflowViewState.IdRef="TypeInto_3" SendWindowMessages="False" SimulateType="False" Text="[Prefix]">
+                            <ui:TypeInto.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="22124ae16aca7c04beb800774d2f56b3" Selector="&lt;webctrl tag='INPUT' /&gt;" WaitForReady="INTERACTIVE" />
+                            </ui:TypeInto.Target>
+                          </ui:TypeInto>
+                        </ActivityAction>
+                      </ui:AnchorBase.Action>
+                      <ui:AnchorBase.AnchorProvider>
+                        <ui:WaitUiElementAppear FoundElement="{x:Null}" DisplayName="Find Element 'B'" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1" WaitActive="False" WaitVisible="False">
+                          <ui:WaitUiElementAppear.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="ad0aea0438776bd09dc349c612f8d400" Selector="&lt;webctrl tag='B' aaname='Prefisso' /&gt;" WaitForReady="INTERACTIVE" />
+                          </ui:WaitUiElementAppear.Target>
+                        </ui:WaitUiElementAppear>
+                      </ui:AnchorBase.AnchorProvider>
+                    </ui:AnchorBase>
+                    <ui:LogMessage DisplayName="Log Message" Level="Info" Message="[&quot;Prefix written&quot;]" sap2010:WorkflowViewState.IdRef="LogMessage_12" />
+                    <ui:AnchorBase AnchorPosition="Auto" DisplayName="Anchor Base">
+                      <ui:AnchorBase.Action>
+                        <ActivityAction x:TypeArguments="ui:Anchor">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="ui:Anchor" Name="ContextAnchor" />
+                          </ActivityAction.Argument>
+                          <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type Into 'INPUT '" EmptyField="True" SendWindowMessages="False" SimulateType="False" Text="[PhoneLine]">
+                            <ui:TypeInto.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="dce195731c695ca181cd0dea8de8bcd1" Selector="&lt;webctrl tag='INPUT' /&gt;" WaitForReady="INTERACTIVE" />
+                            </ui:TypeInto.Target>
+                            <sap2010:WorkflowViewState.IdRef>TypeInto_4</sap2010:WorkflowViewState.IdRef>
+                          </ui:TypeInto>
+                        </ActivityAction>
+                      </ui:AnchorBase.Action>
+                      <ui:AnchorBase.AnchorProvider>
+                        <ui:WaitUiElementAppear FoundElement="{x:Null}" DisplayName="Find Element 'B'" WaitActive="False" WaitVisible="False">
+                          <ui:WaitUiElementAppear.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="3fcf28a25aa3be5a6feab99c24fcb2d5" Selector="&lt;webctrl tag='B' aaname='Numero Linea/Directory Number' /&gt;" WaitForReady="INTERACTIVE" />
+                          </ui:WaitUiElementAppear.Target>
+                          <sap2010:WorkflowViewState.IdRef>WaitUiElementAppear_2</sap2010:WorkflowViewState.IdRef>
+                        </ui:WaitUiElementAppear>
+                      </ui:AnchorBase.AnchorProvider>
+                      <sap2010:WorkflowViewState.IdRef>AnchorBase_2</sap2010:WorkflowViewState.IdRef>
+                    </ui:AnchorBase>
+                    <ui:LogMessage DisplayName="Log Message" Level="Info" Message="[&quot;PhoneLine written&quot;]" sap2010:WorkflowViewState.IdRef="LogMessage_13" />
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;prefix and phone line NOT to fill in&quot;]" />
+                </If.Else>
+              </If>
+            </Sequence>
+            <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Select the banda voce and banda dati&quot;]" />
+          </Sequence>
+        </ActivityAction>
+      </ui:WindowScope.Body>
+    </ui:WindowScope>
+    <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;End LinkConfiguration_Parameters&quot;]" />
+    <sads:DebugSymbol.Symbol>d1tDOlxVc2Vyc1xGRkVSUjA3XERvY3VtZW50c1xVaVBhdGhcQ09QU1wwMS5QUkVcTGlic1xTaWViZWxcTGlua0NvbmZpZ3VyYXRpb25fUGFyYW1ldGVycy54YW1sRwHKAgHQAgEJAY8CAZUCAQgBuwMBwAMBBwF7AYEBAQYB7QMB9AMBBQGMAwGRAwEEAa4BAbIBAQMB3wEB4wEBAk4D4wEOAgEBTwVPpwECAVBQBeABFgIBBOEBBeEBpQECAQJPck+kAQIBUVCPAlDbAgIBT1YL3QEWAgEF4QFy4QGiAQIBA10NYSICAUliDWKmAQIBRWMNY6EBAgFDZA1kuwECAUFlDWwWAgE8bQ10FgIBN3UN2wEYAgEI3AEN3AGxAQIBBl+LAV+/AQIBTl/KAV/WAQIBTF1XXWUCAUpiZ2J1AgFHYkFiWwIBRmN6Y54BAgFEZHpkuAECAUJqOGpIAgE/ZzlnRwIBPXI4ckgCATpvOW9HAgE4dg+CAR8CATCDAQ+PAR8CASuQAQ+hARQCASOiAQ/aARQCAQncAXrcAa4BAgEHdsABdtABAgEygAGNAYAB2QECATaAAeQBgAHwAQIBNIMBvwGDAc8BAgEtjQGiAY0B7gECAS+QAR2QATcCASSSAROfASMCASaiAR2iAT4CAQqkARPVAR4CAQ7YARPYAbgBAgEMkgG/AZIB0wECASidAaYBnQHyAQIBKqUBFaUBtgECASGmARW6ASUCARq7ARW7AaQBAgEYvAEV0wElAgER1AEV1AGnAQIBD9gBgQHYAbUBAgENpQGDAaUBswECASK0ARm4ATICAR+sARuwASkCARu7AVO7AXECARnLARnQATICARbCARvHASkCARLUAVPUAXQCARC2AawBtgHZAQIBIK4BrgGuAc0BAgEerAGpAqwBswICARzNAawBzQHuAQIBF8QBrgHEAc0BAgEVwgGAAsIBjQICARM=</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="LogMessage_8" sap:VirtualizedContainerService.HintSize="1125,91" />
+      <sap2010:ViewStateData Id="UiElementExists_1" sap:VirtualizedContainerService.HintSize="1089,106">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CheckTrue_1" sap:VirtualizedContainerService.HintSize="1089,87">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="LogMessage_3" sap:VirtualizedContainerService.HintSize="1089,91">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="LogMessage_4" sap:VirtualizedContainerService.HintSize="1089,91">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_9" sap:VirtualizedContainerService.HintSize="1089,60" />
+      <sap2010:ViewStateData Id="Assign_10" sap:VirtualizedContainerService.HintSize="1089,60" />
+      <sap2010:ViewStateData Id="SelectItem_1" sap:VirtualizedContainerService.HintSize="1067,134" />
+      <sap2010:ViewStateData Id="SelectItem_2" sap:VirtualizedContainerService.HintSize="1067,134" />
+      <sap2010:ViewStateData Id="SelectItem_3" sap:VirtualizedContainerService.HintSize="314,134" />
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="1067,281">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="LogMessage_10" sap:VirtualizedContainerService.HintSize="706,91" />
+      <sap2010:ViewStateData Id="TypeInto_3" sap:VirtualizedContainerService.HintSize="314,134" />
+      <sap2010:ViewStateData Id="WaitUiElementAppear_1" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="AnchorBase_1" sap:VirtualizedContainerService.HintSize="706,226" />
+      <sap2010:ViewStateData Id="LogMessage_12" sap:VirtualizedContainerService.HintSize="706,91" />
+      <sap2010:ViewStateData Id="TypeInto_4" sap:VirtualizedContainerService.HintSize="314,134" />
+      <sap2010:ViewStateData Id="WaitUiElementAppear_2" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="AnchorBase_2" sap:VirtualizedContainerService.HintSize="706,226" />
+      <sap2010:ViewStateData Id="LogMessage_13" sap:VirtualizedContainerService.HintSize="706,91" />
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="728,1009">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="LogMessage_11" sap:VirtualizedContainerService.HintSize="314,91" />
+      <sap2010:ViewStateData Id="If_2" sap:VirtualizedContainerService.HintSize="1067,1156" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="1089,1949">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="LogMessage_5" sap:VirtualizedContainerService.HintSize="1089,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="1111,2899">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WindowScope_1" sap:VirtualizedContainerService.HintSize="1125,3045">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="LogMessage_9" sap:VirtualizedContainerService.HintSize="1125,91" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="1147,3563">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="LinkConfigurationParameters_1" sap:VirtualizedContainerService.HintSize="1187,3643" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

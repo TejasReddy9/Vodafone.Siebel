@@ -1,0 +1,71 @@
+{
+  "name": "Vodafone.Siebel",
+  "description": "Siebel Library",
+  "main": "Main.xaml",
+  "dependencies": {
+    "UiPath.Excel.Activities": "[2.5.1]",
+    "UiPath.Mail.Activities": "[1.3.0]",
+    "UiPath.UIAutomation.Activities": "[19.4.1]",
+    "UiPath.Database.Activities": "[1.2.6863.32528]",
+    "UiPath.Credentials.Activities": "1.1.6479.13204",
+    "UiPath.System.Activities": "[19.2.0]"
+  },
+  "schemaVersion": "3.2",
+  "studioVersion": "18.4.5.0",
+  "projectVersion": "3.0.1904.2021",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ]
+  },
+  "projectType": "Library",
+  "libraryOptions": {
+    "includeOriginalXaml": false,
+    "privateWorkflows": [
+      "Main.xaml"
+    ]
+  },
+  "arguments": {
+    "input": [
+      {
+        "name": "DBConnection",
+        "type": "UiPath.Database.DatabaseConnection, UiPath.Database, Version=1.2.6863.32522, Culture=neutral, PublicKeyToken=null",
+        "required": false,
+        "hasDefault": false
+      },
+      {
+        "name": "TimeOutS",
+        "type": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "required": false,
+        "hasDefault": false
+      },
+      {
+        "name": "TimeOutM",
+        "type": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "required": false,
+        "hasDefault": false
+      },
+      {
+        "name": "TimeOutL",
+        "type": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "required": false,
+        "hasDefault": false
+      },
+      {
+        "name": "Username",
+        "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "required": false,
+        "hasDefault": false
+      },
+      {
+        "name": "Password",
+        "type": "System.Security.SecureString, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "required": false,
+        "hasDefault": false
+      }
+    ],
+    "output": []
+  }
+}
