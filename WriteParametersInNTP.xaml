@@ -7,7 +7,6 @@
  xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
  xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
  xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
- xmlns:this="clr-namespace:"
  xmlns:ui="http://schemas.uipath.com/workflow/activities"
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
@@ -21,6 +20,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>WriteParametersInNTP_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -70,32 +70,30 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Description: robot will write in ntp module the IdCliente, NumeroPratica and Note&#xD;&#xA;&#xD;&#xA;InputParams: IdCliente, NumeroPratica,NoteNTP" DisplayName="WriteParametersInNTP">
-    <ui:LogMessage DisplayName="Log Message" Level="Info" Message="[&quot;Start write parameters in ntp&quot;]" sap2010:WorkflowViewState.IdRef="LogMessage_1" />
-    <Sequence DisplayName="write arguments retrieved in ntp">
-      <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'iexplore.exe  CCONTACT'" InformativeScreenshot="1f9e67c88de8100175edca9a793b79d9" Selector="&lt;html isremoteapp='1' title='CCONTACT' /&gt;">
+  <Sequence sap2010:Annotation.AnnotationText="Description: robot will write in ntp module the IdCliente, NumeroPratica and Note&#xA;&#xA;InputParams: IdCliente, NumeroPratica,NoteNTP" DisplayName="WriteParametersInNTP" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start write parameters in ntp&quot;]" />
+    <Sequence DisplayName="write arguments retrieved in ntp" sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'iexplore.exe  CCONTACT'" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="1f9e67c88de8100175edca9a793b79d9" Selector="&lt;html isremoteapp='1' title='CCONTACT' /&gt;">
         <ui:BrowserScope.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Do">
-              <ui:LogMessage DisplayName="Log Message" Level="Info" Message="[&quot;attach page ntp executed&quot;]" sap2010:WorkflowViewState.IdRef="LogMessage_2" />
-              <ui:TypeInto DelayBetweenKeys="{x:Null}" Activate="True" ClickBeforeTyping="False" DelayBefore="1000" DelayMS="1500" DisplayName="Type Into textbox codice cliente" EmptyField="True" SendWindowMessages="False" SimulateType="False" Text="[IdCliente]">
+            <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_1">
+              <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;attach page ntp executed&quot;]" />
+              <ui:TypeInto DelayBetweenKeys="{x:Null}" Activate="True" ClickBeforeTyping="False" DelayBefore="1000" DelayMS="1500" DisplayName="Type Into textbox codice cliente" EmptyField="True" sap2010:WorkflowViewState.IdRef="TypeInto_1" SendWindowMessages="False" SimulateType="False" Text="[IdCliente]">
                 <ui:TypeInto.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="be29f483c5a5ecc265d524de698a3e16" Selector="&lt;webctrl id='xsl000020codicecliente' tag='INPUT' /&gt;" TimeoutMS="[TimeOutS]" WaitForReady="INTERACTIVE" />
                 </ui:TypeInto.Target>
-                <sap2010:WorkflowViewState.IdRef>TypeInto_1</sap2010:WorkflowViewState.IdRef>
               </ui:TypeInto>
-              <ui:LogMessage DisplayName="Log Message" Level="Info" Message="[&quot;id cliente written&quot;]" sap2010:WorkflowViewState.IdRef="LogMessage_3" />
-              <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" Activate="True" ClickBeforeTyping="False" DelayMS="1500" DisplayName="Type Into textbox id pratica" EmptyField="True" SendWindowMessages="False" SimulateType="False" Text="[NumeroPratica]">
+              <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;id cliente written&quot;]" />
+              <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" Activate="True" ClickBeforeTyping="False" DelayMS="1500" DisplayName="Type Into textbox id pratica" EmptyField="True" sap2010:WorkflowViewState.IdRef="TypeInto_2" SendWindowMessages="False" SimulateType="False" Text="[NumeroPratica]">
                 <ui:TypeInto.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="5ebec98f0fa489e559281d9a077b0444" Selector="&lt;webctrl id='xsl000020praticasiebel' tag='INPUT' /&gt;" TimeoutMS="[TimeOutS]" WaitForReady="INTERACTIVE" />
                 </ui:TypeInto.Target>
-                <sap2010:WorkflowViewState.IdRef>TypeInto_2</sap2010:WorkflowViewState.IdRef>
               </ui:TypeInto>
-              <ui:LogMessage DisplayName="Log Message" Level="Info" Message="[&quot;numero pratica written&quot;]" sap2010:WorkflowViewState.IdRef="LogMessage_4" />
-              <ui:Click ClickType="CLICK_SINGLE" DelayBefore="800" DelayMS="1500" DisplayName="Click 'button pratica'" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+              <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;numero pratica written&quot;]" />
+              <ui:Click ClickType="CLICK_SINGLE" DelayBefore="800" DelayMS="1500" DisplayName="Click 'button pratica'" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
                 <ui:Click.CursorPosition>
                   <ui:CursorPosition Position="Center">
                     <ui:CursorPosition.OffsetX>
@@ -109,29 +107,22 @@
                 <ui:Click.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="73375a4453d69d7326f7d597db768069" Selector="&lt;webctrl idx='1' isleaf='1' parentid='rtsModuliPratica' tag='SPAN' /&gt;" WaitForReady="INTERACTIVE" />
                 </ui:Click.Target>
-                <sap2010:WorkflowViewState.IdRef>Click_1</sap2010:WorkflowViewState.IdRef>
               </ui:Click>
-              <ui:LogMessage DisplayName="Log Message" Level="Info" Message="[&quot;tab pratica clicked&quot;]" sap2010:WorkflowViewState.IdRef="LogMessage_5" />
-              <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type Into 'push button'" EmptyField="True" SendWindowMessages="False" SimulateType="False" Text="[NoteNTP]">
+              <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;tab pratica clicked&quot;]" />
+              <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type Into 'push button'" EmptyField="True" sap2010:WorkflowViewState.IdRef="TypeInto_3" SendWindowMessages="False" SimulateType="False" Text="[NoteNTP]">
                 <ui:TypeInto.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="723a48b38c73be362525a5c7a6cae876" Selector="&lt;webctrl id='rdNote_C_txtNote_interne_text' tag='TEXTAREA' /&gt;" WaitForReady="INTERACTIVE" />
                 </ui:TypeInto.Target>
-                <sap2010:WorkflowViewState.IdRef>TypeInto_3</sap2010:WorkflowViewState.IdRef>
               </ui:TypeInto>
-              <ui:LogMessage DisplayName="Log Message" Level="Info" Message="[&quot;note ntp written&quot;]" sap2010:WorkflowViewState.IdRef="LogMessage_6" />
-              <sap2010:WorkflowViewState.IdRef>Sequence_1</sap2010:WorkflowViewState.IdRef>
+              <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;note ntp written&quot;]" />
             </Sequence>
           </ActivityAction>
         </ui:BrowserScope.Body>
-        <sap2010:WorkflowViewState.IdRef>BrowserScope_1</sap2010:WorkflowViewState.IdRef>
       </ui:BrowserScope>
-      <ui:LogMessage DisplayName="Log Message" Level="Info" Message="[&quot;End write parameters in ntp&quot;]" sap2010:WorkflowViewState.IdRef="LogMessage_7" />
-      <sap2010:WorkflowViewState.IdRef>Sequence_2</sap2010:WorkflowViewState.IdRef>
+      <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;End write parameters in ntp&quot;]" />
     </Sequence>
-    <sap2010:WorkflowViewState.IdRef>Sequence_3</sap2010:WorkflowViewState.IdRef>
-    <sads:DebugSymbol.Symbol>d1NDOlxVc2Vyc1xGRkVSUjA3XERvY3VtZW50c1xVaVBhdGhcQ09QU1wwMS5QUkVcTGlic1xTaWViZWxcV3JpdGVQYXJhbWV0ZXJzSW5OVFAueGFtbCgBwwEBygEBBAGYAQGeAQEDAW0BcwECSQOFAQ4CAQFKBUqiAQIBKUsFggEQAgECSkNKcAIBKkwHfxkCAQWAAQeAAaIBAgEDTPUBTKYCAgEoUg17GAIBBoABRYABcAIBBFMPU6cBAgEmVA9ZHQIBHloPWqEBAgEcWw9gHQIBFWEPYaUBAgETYg9xGgIBD3IPcqIBAgENcw94HQIBCXkPeZ8BAgEHU01TdQIBJ1aNAVbIAQIBJVR9VIMBAgEkVtMBVt8BAgEiVPoBVIcCAgEgVG5UdAIBH1pNWm8CAR1djQFdyAECARtbgQFbhwECARpd0wFd3wECARhb+gFbiwICARZhTWFzAgEUbqIBbu8BAgESYkxiUgIBEWI+YkMCARByTXJwAgEOdaIBdecBAgEMc/kBc4QCAgEKeU15bQIBCA==</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d0tDOlxVc2Vyc1xyb2JvdDUxMHVcRG9jdW1lbnRzXFVpUGF0aFxTaWViZWxcU2llYmVsXFdyaXRlUGFyYW1ldGVyc0luTlRQLnhhbWwlSQN9DgIBAUoFSqIBAgEpSwV7EAIBAkpySp8BAgEqTAd5GQIBBXoHeqIBAgEDTKYCTNcCAgEoUg12GAIBBnp0ep8BAgEEUw9TpwECASZUD1gdAgEeWQ9ZoQECARxaD14dAgEVXw9fpQECARNgD24aAgEPbw9vogECAQ1wD3QdAgEJdQ91nwECAQdTfFOkAQIBJ1aNAVbIAQIBJVR9VIMBAgEkVtMBVt8BAgEiVKcCVLQCAgEgVG5UdAIBH1l8WZ4BAgEdXI0BXMgBAgEbWoEBWocBAgEaXNMBXN8BAgEYWqcCWrgCAgEWX3xfogECARRsogFs7wECARJgTGBSAgERYD5gQwIBEG98b58BAgEOcqIBcucBAgEMcKYCcLECAgEKdXx1nAECAQg=</sads:DebugSymbol.Symbol>
   </Sequence>
-  <sap2010:WorkflowViewState.IdRef>WriteParametersInNTP_1</sap2010:WorkflowViewState.IdRef>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
       <sap2010:ViewStateData Id="LogMessage_1" sap:VirtualizedContainerService.HintSize="436,91" />
@@ -169,7 +160,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="WriteParametersInNTP_1" sap:VirtualizedContainerService.HintSize="498,2255" />
+      <sap2010:ViewStateData Id="WriteParametersInNTP_1" sap:VirtualizedContainerService.HintSize="498,2215" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>

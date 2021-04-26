@@ -74,6 +74,7 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>UiPath.Studio.Plugin.Workflow</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="LinkConfigurationFollowingElementiAttivi" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -102,6 +103,7 @@
       <Variable x:TypeArguments="x:Boolean" Name="rowExist" />
       <Variable x:TypeArguments="x:Boolean" Name="alertPageExists" />
       <Variable x:TypeArguments="x:Boolean" Name="controlloErroriPopupExists" />
+      <Variable x:TypeArguments="x:Boolean" Name="nuovaOffertaPopupExists" />
     </Sequence.Variables>
     <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start Configura link&quot;]" />
     <Assign sap2010:WorkflowViewState.IdRef="Assign_19">
@@ -873,17 +875,16 @@
         </Sequence>
       </If.Then>
     </If>
-    <ui:UiElementExists DisplayName="Element Exists 'Alert page'" Exists="[alertPageExists]">
+    <ui:UiElementExists DisplayName="Element Exists 'Alert page'" Exists="[alertPageExists]" sap2010:WorkflowViewState.IdRef="UiElementExists_17">
       <ui:UiElementExists.Target>
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="87073e6d526546514a49f52bafc75beb" Selector="&lt;html app='internet explorer.exe' isremoteapp='1' title='Siebel*' /&gt;&lt;webctrl id='CfgErrorMessageSpan' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tag='TD' aaname='L&amp;apos;elemento che si sta cercando di personalizzare contiene sottoelementi o attributi non validi oppure non è conforme alla definizione del prodotto personalizzabile. Si desidera procedere e rimuovere oppure correggere le selezioni non valide?(SBL-CFG-00163)' /&gt;" TimeoutMS="30000" WaitForReady="COMPLETE" />
       </ui:UiElementExists.Target>
-      <sap2010:WorkflowViewState.IdRef>UiElementExists_17</sap2010:WorkflowViewState.IdRef>
     </ui:UiElementExists>
-    <If Condition="[alertPageExists=true]">
+    <If Condition="[alertPageExists=true]" sap2010:WorkflowViewState.IdRef="If_13">
       <If.Then>
-        <Sequence>
-          <ui:LogMessage DisplayName="Log Message" Level="Info" Message="[&quot;Page 'Selezioni non valide' has appeared&quot;]" sap2010:WorkflowViewState.IdRef="LogMessage_44" />
-          <ui:Click ClickType="CLICK_SINGLE" DelayBefore="2000" DelayMS="2000" DisplayName="Click OK" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_43">
+          <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_44" Level="Info" Message="[&quot;Page 'Selezioni non valide' has appeared&quot;]" />
+          <ui:Click ClickType="CLICK_SINGLE" DelayBefore="2000" DelayMS="2000" DisplayName="Click OK" sap2010:WorkflowViewState.IdRef="Click_13" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
             <ui:Click.CursorPosition>
               <ui:CursorPosition Position="Center">
                 <ui:CursorPosition.OffsetX>
@@ -897,16 +898,13 @@
             <ui:Click.Target>
               <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="86cbbf5aec1f1045173c93ccd052b492" Selector="&lt;html app='internet explorer.exe' isremoteapp='1' title='Siebel*' /&gt;&lt;webctrl tag='A' aaname='OK' idx='1' /&gt;" WaitForReady="INTERACTIVE" />
             </ui:Click.Target>
-            <sap2010:WorkflowViewState.IdRef>Click_13</sap2010:WorkflowViewState.IdRef>
           </ui:Click>
-          <ui:LogMessage DisplayName="Log Message" Level="Trace" Message="[&quot;Ok button clicked&quot;]" sap2010:WorkflowViewState.IdRef="LogMessage_45" />
-          <sap2010:WorkflowViewState.IdRef>Sequence_43</sap2010:WorkflowViewState.IdRef>
+          <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_45" Level="Trace" Message="[&quot;Ok button clicked&quot;]" />
         </Sequence>
       </If.Then>
       <If.Else>
-        <ui:LogMessage DisplayName="Log Message" Level="Info" Message="[&quot;Page 'Selezioni non valide' has not appeared&quot;]" sap2010:WorkflowViewState.IdRef="LogMessage_46" />
+        <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_46" Level="Info" Message="[&quot;Page 'Selezioni non valide' has not appeared&quot;]" />
       </If.Else>
-      <sap2010:WorkflowViewState.IdRef>If_13</sap2010:WorkflowViewState.IdRef>
     </If>
     <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Trace" Message="[&quot;Check if LINK CONSUMER is open&quot;]" />
     <ui:UiElementExists DisplayName="Element Exists 'A  GRPITEM[~^`grpItemId...'" Exists="[linkConsumerTabExist]" sap2010:WorkflowViewState.IdRef="UiElementExists_11">
@@ -1013,7 +1011,7 @@
                   <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                 </ActivityAction.Argument>
                 <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_16">
-                  <ui:Check ContinueOnError="{x:Null}" Action="Check" DelayAfter="500" DelayBefore="500" sap2010:WorkflowViewState.IdRef="Check_1">
+                  <ui:Check ContinueOnError="{x:Null}" Action="Check" DelayAfter="500" DelayBefore="500" DisplayName="Check - New" sap2010:WorkflowViewState.IdRef="Check_1">
                     <ui:Check.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="[&quot;&lt;html app='internet explorer.exe' isremoteapp='1' title='Siebel Call Center*' /&gt;&lt;webctrl tag='TR' aaname='&quot;+ServiziVideo+&quot;*' /&gt;&lt;webctrl tag='INPUT' type='radio' /&gt;&quot;]" TimeoutMS="[TimeOutL]" WaitForReady="COMPLETE" />
                     </ui:Check.Target>
@@ -1041,7 +1039,7 @@
                           <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                         </ActivityAction.Argument>
                         <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_18">
-                          <ui:SetFocus DelayBefore="{x:Null}" DelayMS="{x:Null}" DisplayName="Set Focus" sap2010:WorkflowViewState.IdRef="SetFocus_1">
+                          <ui:SetFocus DelayBefore="{x:Null}" DelayMS="{x:Null}" DisplayName="Set Focus - New" sap2010:WorkflowViewState.IdRef="SetFocus_1">
                             <ui:SetFocus.Target>
                               <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="[&quot;&lt;html app='internet explorer.exe' isremoteapp='1' title='Siebel Call Center*' /&gt;&lt;webctrl tag='TR' aaname='&quot;+ServiziVideo+&quot;*' /&gt;&lt;webctrl tag='INPUT' type='radio' /&gt;&quot;]" TimeoutMS="[TimeOutL]" WaitForReady="COMPLETE" />
                             </ui:SetFocus.Target>
@@ -1058,7 +1056,7 @@
                           <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                         </ActivityAction.Argument>
                         <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_22">
-                          <ui:Check ContinueOnError="{x:Null}" Action="Check" DelayAfter="500" DelayBefore="500" sap2010:WorkflowViewState.IdRef="Check_2">
+                          <ui:Check ContinueOnError="{x:Null}" Action="Check" DelayAfter="500" DelayBefore="500" DisplayName="Check - New" sap2010:WorkflowViewState.IdRef="Check_2">
                             <ui:Check.Target>
                               <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="[&quot;&lt;html app='internet explorer.exe' isremoteapp='1' title='Siebel Call Center*' /&gt;&lt;webctrl tag='TR' aaname='&quot;+ServiziVideo+&quot;*' /&gt;&lt;webctrl tag='INPUT' type='radio' /&gt;&quot;]" TimeoutMS="[TimeOutL]" WaitForReady="COMPLETE" />
                             </ui:Check.Target>
@@ -1088,7 +1086,7 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="checked" DisplayName="Get Attribute" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
+    <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="checked" DisplayName="Get Attribute - New" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
       <ui:GetAttribute.Result>
         <OutArgument x:TypeArguments="ui:GenericValue">[checkedElement1]</OutArgument>
       </ui:GetAttribute.Result>
@@ -1108,7 +1106,7 @@
                   <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                 </ActivityAction.Argument>
                 <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_23">
-                  <ui:Check ContinueOnError="{x:Null}" Action="Check" DelayAfter="500" DelayBefore="500" sap2010:WorkflowViewState.IdRef="Check_3">
+                  <ui:Check ContinueOnError="{x:Null}" Action="Check" DelayAfter="500" DelayBefore="500" DisplayName="Check - New" sap2010:WorkflowViewState.IdRef="Check_3">
                     <ui:Check.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="[&quot;&lt;html app='internet explorer.exe' isremoteapp='1' title='Siebel Call Center*' /&gt;&lt;webctrl tag='TR' aaname='&quot;+CanoneDeviceVideo+&quot;*' /&gt;&lt;webctrl tag='INPUT' type='radio' /&gt;&quot;]" TimeoutMS="[TimeOutL]" WaitForReady="COMPLETE" />
                     </ui:Check.Target>
@@ -1136,7 +1134,7 @@
                           <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                         </ActivityAction.Argument>
                         <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_25">
-                          <ui:SetFocus DelayBefore="{x:Null}" DelayMS="{x:Null}" DisplayName="Set Focus" sap2010:WorkflowViewState.IdRef="SetFocus_2">
+                          <ui:SetFocus DelayBefore="{x:Null}" DelayMS="{x:Null}" DisplayName="Set Focus - New" sap2010:WorkflowViewState.IdRef="SetFocus_2">
                             <ui:SetFocus.Target>
                               <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="[&quot;&lt;html app='internet explorer.exe' isremoteapp='1' title='Siebel Call Center*' /&gt;&lt;webctrl tag='TR' aaname='&quot;+CanoneDeviceVideo+&quot;*' /&gt;&lt;webctrl tag='INPUT' type='radio' /&gt;&quot;]" TimeoutMS="[TimeOutL]" WaitForReady="COMPLETE" />
                             </ui:SetFocus.Target>
@@ -1153,7 +1151,7 @@
                           <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                         </ActivityAction.Argument>
                         <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_26">
-                          <ui:Check ContinueOnError="{x:Null}" Action="Check" DelayAfter="500" DelayBefore="500" sap2010:WorkflowViewState.IdRef="Check_4">
+                          <ui:Check ContinueOnError="{x:Null}" Action="Check" DelayAfter="500" DelayBefore="500" DisplayName="Check - New" sap2010:WorkflowViewState.IdRef="Check_4">
                             <ui:Check.Target>
                               <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="[&quot;&lt;html app='internet explorer.exe' isremoteapp='1' title='Siebel Call Center*' /&gt;&lt;webctrl tag='TR' aaname='&quot;+CanoneDeviceVideo+&quot;*' /&gt;&lt;webctrl tag='INPUT' type='radio' /&gt;&quot;]" TimeoutMS="[TimeOutL]" WaitForReady="COMPLETE" />
                             </ui:Check.Target>
@@ -1183,7 +1181,7 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="checked" DisplayName="Get Attribute" sap2010:WorkflowViewState.IdRef="GetAttribute_2">
+    <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="checked" DisplayName="Get Attribute - New" sap2010:WorkflowViewState.IdRef="GetAttribute_2">
       <ui:GetAttribute.Result>
         <OutArgument x:TypeArguments="ui:GenericValue">[checkedElement1]</OutArgument>
       </ui:GetAttribute.Result>
@@ -1208,17 +1206,16 @@
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="f2ef163138bd5d3791380b3d215a21e6" Selector="&lt;html app='internet explorer.exe' isremoteapp='1' title='Siebel*' /&gt;&lt;webctrl tag='A' aaname='Eseguito' colName='Eseguito' /&gt;" TimeoutMS="[TimeOutM]" WaitForReady="COMPLETE" />
       </ui:Click.Target>
     </ui:Click>
-    <ui:UiElementExists DisplayName="Element Exists 'Controllo errori'" Exists="[controlloErroriPopupExists]">
+    <ui:UiElementExists DisplayName="Element Exists 'Controllo errori'" Exists="[controlloErroriPopupExists]" sap2010:WorkflowViewState.IdRef="UiElementExists_18">
       <ui:UiElementExists.Target>
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="3065a05c53279fc34354eb87cbc8b52a" Selector="&lt;wnd app='internet explorer.exe' cls='#32770' isremoteapp='1' title='Message from webpage' /&gt;&lt;wnd aaname='Controllo errori ha generato (1) errori. Fare clic sul pulsante Annulla per annullare e visualizzare ulteriori dettagli. Fare clic sul pulsante OK per continuare e salvare la configurazione corrente.' /&gt;" TimeoutMS="10000" WaitForReady="INTERACTIVE" />
       </ui:UiElementExists.Target>
-      <sap2010:WorkflowViewState.IdRef>UiElementExists_18</sap2010:WorkflowViewState.IdRef>
     </ui:UiElementExists>
-    <If Condition="[controlloErroriPopupExists=true]">
+    <If Condition="[controlloErroriPopupExists=true]" sap2010:WorkflowViewState.IdRef="If_14">
       <If.Then>
-        <Sequence>
-          <ui:LogMessage DisplayName="Log Message" Level="Info" Message="[&quot;Popup 'Controllo errori' has appeared&quot;]" sap2010:WorkflowViewState.IdRef="LogMessage_47" />
-          <ui:Click ClickType="CLICK_SINGLE" DelayBefore="2000" DelayMS="3000" DisplayName="Click 'Button'" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_44">
+          <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_47" Level="Info" Message="[&quot;Popup 'Controllo errori' has appeared&quot;]" />
+          <ui:Click ClickType="CLICK_SINGLE" DelayBefore="2000" DelayMS="3000" DisplayName="Click 'Button'" sap2010:WorkflowViewState.IdRef="Click_14" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
             <ui:Click.CursorPosition>
               <ui:CursorPosition Position="Center">
                 <ui:CursorPosition.OffsetX>
@@ -1232,16 +1229,66 @@
             <ui:Click.Target>
               <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="9362c59d41e69aada677afe9b2a07920" Selector="&lt;wnd app='internet explorer.exe' cls='#32770' isremoteapp='1' title='Message from webpage' /&gt;&lt;wnd aaname='OK' cls='Button' /&gt;" WaitForReady="INTERACTIVE" />
             </ui:Click.Target>
-            <sap2010:WorkflowViewState.IdRef>Click_14</sap2010:WorkflowViewState.IdRef>
           </ui:Click>
-          <ui:LogMessage DisplayName="Log Message" Level="Trace" Message="[&quot;Ok button clicked&quot;]" sap2010:WorkflowViewState.IdRef="LogMessage_48" />
-          <sap2010:WorkflowViewState.IdRef>Sequence_44</sap2010:WorkflowViewState.IdRef>
+          <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_48" Level="Trace" Message="[&quot;Ok button clicked&quot;]" />
         </Sequence>
       </If.Then>
       <If.Else>
-        <ui:LogMessage DisplayName="Log Message" Level="Info" Message="[&quot;Popup 'Controllo errori' has not appeared&quot;]" sap2010:WorkflowViewState.IdRef="LogMessage_49" />
+        <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_49" Level="Info" Message="[&quot;Popup 'Controllo errori' has not appeared&quot;]" />
       </If.Else>
-      <sap2010:WorkflowViewState.IdRef>If_14</sap2010:WorkflowViewState.IdRef>
+    </If>
+    <ui:Comment sap2010:WorkflowViewState.IdRef="Comment_1" Text="// FIX 2503: Added popup &quot;Nuova offerta&quot; handling" />
+    <ui:UiElementExists sap2010:Annotation.AnnotationText="" DisplayName="Element Exists 'Nuova Offerta - New'" Exists="[nuovaOffertaPopupExists]" sap2010:WorkflowViewState.IdRef="UiElementExists_19">
+      <ui:UiElementExists.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="b40f01bfa2fb80a837a0adfe30efa3d1" Selector="&lt;wnd app='internet explorer.exe' cls='#32770' isremoteapp='1' /&gt;&lt;wnd ctrlid='65535' /&gt;" TimeoutMS="3000" WaitForReady="INTERACTIVE" />
+      </ui:UiElementExists.Target>
+    </ui:UiElementExists>
+    <If Condition="[nuovaOffertaPopupExists=true]" sap2010:WorkflowViewState.IdRef="If_15">
+      <If.Then>
+        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_46">
+          <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_50" Level="Info" Message="[&quot;Popup 'Nuova Offerta' has appeared&quot;]" />
+          <ui:CommentOut DisplayName="Comment Out" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+            <ui:CommentOut.Body>
+              <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_45">
+                <ui:Click ClickType="CLICK_SINGLE" DelayBefore="2000" DelayMS="3000" DisplayName="Click 'Button'" sap2010:WorkflowViewState.IdRef="Click_15" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                  <ui:Click.CursorPosition>
+                    <ui:CursorPosition Position="Center">
+                      <ui:CursorPosition.OffsetX>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:CursorPosition.OffsetX>
+                      <ui:CursorPosition.OffsetY>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:CursorPosition.OffsetY>
+                    </ui:CursorPosition>
+                  </ui:Click.CursorPosition>
+                  <ui:Click.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="9362c59d41e69aada677afe9b2a07920" Selector="&lt;wnd app='internet explorer.exe' cls='#32770' isremoteapp='1' title='Message from webpage' /&gt;&lt;wnd aaname='OK' cls='Button' /&gt;" WaitForReady="INTERACTIVE" />
+                  </ui:Click.Target>
+                </ui:Click>
+              </Sequence>
+            </ui:CommentOut.Body>
+          </ui:CommentOut>
+          <ui:Click ClickType="CLICK_SINGLE" DelayBefore="2000" DelayMS="3000" DisplayName="Click 'Button'" sap2010:WorkflowViewState.IdRef="Click_16" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+            <ui:Click.CursorPosition>
+              <ui:CursorPosition Position="Center">
+                <ui:CursorPosition.OffsetX>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetX>
+                <ui:CursorPosition.OffsetY>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetY>
+              </ui:CursorPosition>
+            </ui:Click.CursorPosition>
+            <ui:Click.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="9362c59d41e69aada677afe9b2a07920" Selector="&lt;wnd app='internet explorer.exe' cls='#32770' isremoteapp='1' /&gt;&lt;wnd aaname='OK' cls='Button' /&gt;" WaitForReady="INTERACTIVE" />
+            </ui:Click.Target>
+          </ui:Click>
+          <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_51" Level="Trace" Message="[&quot;Ok button clicked&quot;]" />
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_52" Level="Info" Message="[&quot;Popup 'Nuova Offerta' has not appeared&quot;]" />
+      </If.Else>
     </If>
     <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_29" Level="Trace" Message="[&quot;CHeck if the Order Form Applet exist&quot;]" />
     <ui:UiElementExists DisplayName="Element Exists 'B'" Exists="[datiPraticaExist]" sap2010:WorkflowViewState.IdRef="UiElementExists_14">
@@ -1251,7 +1298,7 @@
     </ui:UiElementExists>
     <ui:CheckTrue DisplayName="Check True" ErrorMessage="Not possible to close the Link configuration" Expression="[datiPraticaExist]" sap2010:WorkflowViewState.IdRef="CheckTrue_9" />
     <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_30" Level="Info" Message="[&quot;End Configuration&quot;]" />
-    <sads:DebugSymbol.Symbol>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</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>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</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -1367,7 +1414,7 @@
       <sap2010:ViewStateData Id="Catch`1_6" sap:VirtualizedContainerService.HintSize="446,1052">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -1461,7 +1508,7 @@
       <sap2010:ViewStateData Id="Catch`1_1" sap:VirtualizedContainerService.HintSize="734,555">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -1990,11 +2037,11 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="If_7" sap:VirtualizedContainerService.HintSize="1157,51">
+      <sap2010:ViewStateData Id="If_7" sap:VirtualizedContainerService.HintSize="1157,837">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-            <x:Boolean x:Key="IsPinned">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
@@ -2111,7 +2158,7 @@
       <sap2010:ViewStateData Id="Catch`1_9" sap:VirtualizedContainerService.HintSize="460,1813">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -2252,7 +2299,7 @@
       <sap2010:ViewStateData Id="Catch`1_11" sap:VirtualizedContainerService.HintSize="460,1813">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -2302,18 +2349,62 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="LogMessage_29" sap:VirtualizedContainerService.HintSize="1157,91" />
-      <sap2010:ViewStateData Id="UiElementExists_14" sap:VirtualizedContainerService.HintSize="1157,106" />
-      <sap2010:ViewStateData Id="CheckTrue_9" sap:VirtualizedContainerService.HintSize="1157,87" />
-      <sap2010:ViewStateData Id="LogMessage_30" sap:VirtualizedContainerService.HintSize="1157,91" />
-      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="1179,28537">
+      <sap2010:ViewStateData Id="Comment_1" sap:VirtualizedContainerService.HintSize="1157,74" />
+      <sap2010:ViewStateData Id="UiElementExists_19" sap:VirtualizedContainerService.HintSize="1157,133">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="LogMessage_50" sap:VirtualizedContainerService.HintSize="314,91" />
+      <sap2010:ViewStateData Id="Click_15" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="Sequence_45" sap:VirtualizedContainerService.HintSize="336,230">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="LinkConfigurationFollowingElementiAttivi_1" sap:VirtualizedContainerService.HintSize="1219,28617">
+      <sap2010:ViewStateData Id="CommentOut_5" sap:VirtualizedContainerService.HintSize="314,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Click_16" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="LogMessage_51" sap:VirtualizedContainerService.HintSize="314,91" />
+      <sap2010:ViewStateData Id="Sequence_46" sap:VirtualizedContainerService.HintSize="336,583">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="LogMessage_52" sap:VirtualizedContainerService.HintSize="314,91" />
+      <sap2010:ViewStateData Id="If_15" sap:VirtualizedContainerService.HintSize="1157,731">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="LogMessage_29" sap:VirtualizedContainerService.HintSize="1157,91" />
+      <sap2010:ViewStateData Id="UiElementExists_14" sap:VirtualizedContainerService.HintSize="1157,106" />
+      <sap2010:ViewStateData Id="CheckTrue_9" sap:VirtualizedContainerService.HintSize="1157,87" />
+      <sap2010:ViewStateData Id="LogMessage_30" sap:VirtualizedContainerService.HintSize="1157,91" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="1179,30381">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="LinkConfigurationFollowingElementiAttivi_1" sap:VirtualizedContainerService.HintSize="1219,30501">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
