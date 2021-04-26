@@ -84,7 +84,7 @@
     <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start register item in siebel&quot;]" />
     <ui:SetFocus DelayMS="{x:Null}" DelayBefore="1000" DisplayName="Set Focus 'Dettaglio ordine'" sap2010:WorkflowViewState.IdRef="SetFocus_1">
       <ui:SetFocus.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="764fca7a3c27eea804d014abbed19915" Selector="&lt;html app='internet explorer.exe' isremoteapp='1' title='Siebel Call Center*' /&gt;&lt;webctrl tag='DIV' aaname='*Dati Cliente  Dati Ordine*' omit:idx='1' /&gt;" TimeoutMS="[TimeOutS]" WaitForReady="INTERACTIVE" />
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="764fca7a3c27eea804d014abbed19915" Selector="&lt;html app='internet explorer.exe' isremoteapp='1' title='Siebel*' /&gt;&lt;webctrl id='s_S_A4_div' tag='DIV' /&gt;" TimeoutMS="[TimeOutS]" WaitForReady="INTERACTIVE" />
       </ui:SetFocus.Target>
     </ui:SetFocus>
     <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;focus setted correctly&quot;]" />
@@ -145,45 +145,15 @@
           </ui:Click.Target>
         </ui:Click>
         <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Button 'registra' clicked&quot;]" />
-        <ui:UiElementExists DisplayName="Element Exists pop up conferma registrazione pratica" Exists="[ExistPopupConfermaRegistrazionePratica]" sap2010:WorkflowViewState.IdRef="UiElementExists_7">
+        <ui:UiElementExists DisplayName="Element Exists pop up conferma registrazione pratica" Exists="[ExistPopupConfermaRegistrazionePratica]" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
           <ui:UiElementExists.Target>
             <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="7d5abf0e00f940ffa8b353d6f59d7023" Selector="&lt;wnd app='internet explorer.exe' cls='#32770' isremoteapp='1' title='Message from webpage' /&gt;" TimeoutMS="[TimeOutXS]" WaitForReady="INTERACTIVE" />
-          </ui:UiElementExists.Target>
-        </ui:UiElementExists>
-        <If Condition="[ExistPopupConfermaRegistrazionePratica]" sap2010:WorkflowViewState.IdRef="If_7">
-          <If.Then>
-            <Sequence sap2010:WorkflowViewState.IdRef="Sequence_18">
-              <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_30" Level="Info" Message="[&quot;Pop up 'conferma registrazione' has appeared&quot;]" />
-              <ui:Click DelayBefore="{x:Null}" ClickType="CLICK_SINGLE" DelayMS="5000" DisplayName="Click ok button in pop up" sap2010:WorkflowViewState.IdRef="Click_9" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
-                <ui:Click.CursorPosition>
-                  <ui:CursorPosition Position="Center">
-                    <ui:CursorPosition.OffsetX>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:CursorPosition.OffsetX>
-                    <ui:CursorPosition.OffsetY>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:CursorPosition.OffsetY>
-                  </ui:CursorPosition>
-                </ui:Click.CursorPosition>
-                <ui:Click.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="14dc2c1e423ca3fbdf8f23566a71010b" Selector="&lt;wnd app='internet explorer.exe' cls='#32770' isremoteapp='1' title='Message from webpage' /&gt;&lt;wnd ctrlid='1' title='OK' /&gt;" TimeoutMS="[TimeOutS]" WaitForReady="INTERACTIVE" />
-                </ui:Click.Target>
-              </ui:Click>
-            </Sequence>
-          </If.Then>
-          <If.Else>
-            <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_31" Level="Info" Message="[&quot;Pop up 'conferma registrazione' has not appeared&quot;]" />
-          </If.Else>
-        </If>
-        <ui:UiElementExists DisplayName="Element Exists pop up conferma registrazione pratica" Exists="[ExistPopupConfermaRegistrazionePratica]" sap2010:WorkflowViewState.IdRef="UiElementExists_8">
-          <ui:UiElementExists.Target>
-            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="7d5abf0e00f940ffa8b353d6f59d7023" Selector="&lt;wnd app='internet explorer.exe' cls='#32770' isremoteapp='1' title='Message from webpage' /&gt;&lt;wnd omit:ctrlid='65535' title='Attenzione, non è stato specificato alcun CLI associato*' /&gt;" TimeoutMS="[TimeOutXS]" WaitForReady="INTERACTIVE" />
           </ui:UiElementExists.Target>
         </ui:UiElementExists>
         <If Condition="[ExistPopupConfermaRegistrazionePratica]" sap2010:WorkflowViewState.IdRef="If_2">
           <If.Then>
             <Sequence sap2010:WorkflowViewState.IdRef="Sequence_8">
-              <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Info" Message="[&quot;Pop up 'Attenzione, non è stato specificato alcun CLI associato' has appeared&quot;]" />
+              <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Info" Message="[&quot;Pop up 'conferma registrazione' has appeared&quot;]" />
               <ui:Click DelayBefore="{x:Null}" ClickType="CLICK_SINGLE" DelayMS="5000" DisplayName="Click ok button in pop up" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
                 <ui:Click.CursorPosition>
                   <ui:CursorPosition Position="Center">
@@ -202,7 +172,7 @@
             </Sequence>
           </If.Then>
           <If.Else>
-            <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Info" Message="[&quot;Pop up 'Attenzione, non è stato specificato alcun CLI associato' has not appeared&quot;]" />
+            <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Info" Message="[&quot;Pop up 'conferma registrazione' has not appeared&quot;]" />
           </If.Else>
         </If>
         <ui:UiElementExists DisplayName="Element Exists pop up conferma registrazione pratica" Exists="[ExistPopupConfermaRegistrazionePratica]" sap2010:WorkflowViewState.IdRef="UiElementExists_6">
@@ -319,7 +289,7 @@
                   </Catch>
                 </TryCatch.Catches>
               </TryCatch>
-              <If Condition="[state.Trim.ToLower=&quot;inviato&quot; or state.Trim.ToLower=&quot;registrato&quot; or state.Trim.ToLower.StartsWith(&quot;parzialmente&quot;)]" sap2010:WorkflowViewState.IdRef="If_3">
+              <If Condition="[state.Trim.ToLower=&quot;inviato&quot; or state.Trim.ToLower=&quot;registrato&quot;]" sap2010:WorkflowViewState.IdRef="If_3">
                 <If.Then>
                   <Sequence sap2010:WorkflowViewState.IdRef="Sequence_14">
                     <Assign sap2010:WorkflowViewState.IdRef="Assign_3">
@@ -476,7 +446,7 @@
       </If.Then>
     </If>
     <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;End register item in siebel&quot;]" />
-    <sads:DebugSymbol.Symbol>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</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d1FDOlxVc2Vyc1xaWkZNTzJEXERvY3VtZW50c1xVaVBhdGhcQ09QU1wwMS5QUkVcTGlic1xTaWViZWxcUmVnaXN0ZXJJdGVtU2llYmVsLnhhbWyTAU0DwgMOAgEBVAVUogEDAbMBVQVZEwMBrgFaBVqcAQMBrAFbBV8VAwGpAWAFZBUDAaYBZQVpFQMBowFqBW4aAwGdAW8Fb7EBAwGZAXAFcJsBAwGXAXEFeA4DAZMBeQWAAQ4DAY8BgQEFugMPAgEIuwMFvwMKAgEEwAMFwAOgAQIBAlRyVJ8BAwG0AVeDAVf6AQMBsgFXhQJXkQIDAbABVTFVNwMBrwFac1qZAQMBrQFdmAFd/gEDAasBW+0BW/MBAwGqAWKYAWL+AQMBqAFg7QFg8wEDAacBZ5gBZ/4BAwGlAWXtAWXzAQMBpAFsgwFshQIDAaIBbJACbJwCAwGgAWpNamQDAZ4Bb2lvgAEDAZsBbzlvXQMBmgFwc3CYAQMBmAF2N3Y+AwGWAXM4c0kDAZQBfjd+OgMBkgF7OHtHAwGQAYEBW4EBjAEDAY4BggEHuQMSAgEJuwMTuwMsAgEFvQMJvQOTAQIBBsADcsADnQECAQODAQmDAcIBAwGMAYQBCZIBFAMBigGTAQmTAaIBAwGIAZQBCZgBHgMBggGZAQmxAQ4CAXWyAQm2AR4CAW+3AQnPAQ4CAWLQAQmwAxQCAQ+xAwm4AxICAQq9Axq9A2YCAQeDAXeDAb8BAwGNAZABnAGQAZ4CAwGLAZMBdpMBnwEDAYkBlgGHAZYB7AEDAYcBlgH3AZYBhAIDAYUBlAFnlAGRAQMBgwGZAReZAUECAXabAQ2sARgCAXqvAQ2vAb4BAgF4tAGHAbQB1QECAXS0AeABtAHtAQIBcrIBZ7IBkQECAXC3ARe3AUECAWO5AQ3KARgCAWfNAQ3NAb4BAgFl0gENvQIYAgE4xQIRrAMcAgEQtgM7tgNOAgENswM8swNLAgELnAEPnAG8AQMBgAGdAQ+rARoCAXuvAXuvAbsBAgF5ugEPugG8AQIBbbsBD8kBGgIBaM0Be80BuwECAWbTAQ/rAR8CAWHsAQ+jAhoCAUikAg+8AhQCATnGAhPKAigCATLLAhPLAq0BAgEvzAITqwMYAgERnAF9nAG5AQMBgQGpAY0BqQGVAgIBf50BUZ0BVwIBfqkBoAKpAawCAgF8ugF9ugG5AQIBbscBjQHHAYICAgFsuwFRuwFXAgFrxwGNAscBmQICAWnuARP9AR4CAVWFAhefAiICAUmkAh2kAnQCATqmAhOwAh4CAUGzAhO6AhwCAT3IApEByAKRAgIBN8gCnALIAqkCAgE1xgJQxgJaAgEzywKCAcsCqgECATDMAiHMAjACARLOAhepAyICARTvARX2ASACAV33ARX7ASsCAVn8ARX8AZABAgFWhgIZnQIpAgFNngIZngKUAQIBSqcCFa4CHgIBRK8CFa8CugECAUK4AkW4AkwCAUC1Aka1AlcCAT7SAhnSArYBAgEt0wIZ1wIuAgEn2AIZ2AK5AQIBI9kCGdkCqQECASHaAhnoAiQCAR7pAhnpAqsBAgEc6gIZ8QIiAgEY8gIZpwMpAgEXqAMZqAOjAQIBFfQBqAH0AaACAgFg8QFB8QFEAgFf8QE08QE4AgFe9wGlAfcBqwECAVz5AUH5AUgCAVr8AYQB/AGNAQIBV5cCHZsCNgIBU4wCH5MCLQIBTp4CiAGeApEBAgFLrAJHrAJNAgFHqQJIqQJZAgFFrwKDAa8CtwECAUPSAoYB0gKzAQIBLtUClwHVAvkDAgEs1QKEBNUCkAQCASrTAl3TAm4CASjYAnfYAogBAgEl2AJN2AJrAgEk2QKHAdkCpgECASLmAqwB5gKOBAIBINoCW9oCYQIBH+kChwHpAqgBAgEd7wJL7wJSAgEb7AJM7AJdAgEZqAMqqAN2AgEWmQKwAZkCqAICAVSRAkuRAlICAVCOArIBjgLMAQIBUg==</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -494,19 +464,7 @@
       <sap2010:ViewStateData Id="LogMessage_19" sap:VirtualizedContainerService.HintSize="675,91" />
       <sap2010:ViewStateData Id="Click_1" sap:VirtualizedContainerService.HintSize="675,106" />
       <sap2010:ViewStateData Id="LogMessage_4" sap:VirtualizedContainerService.HintSize="675,91" />
-      <sap2010:ViewStateData Id="UiElementExists_7" sap:VirtualizedContainerService.HintSize="675,106" />
-      <sap2010:ViewStateData Id="LogMessage_30" sap:VirtualizedContainerService.HintSize="314,91" />
-      <sap2010:ViewStateData Id="Click_9" sap:VirtualizedContainerService.HintSize="314,106" />
-      <sap2010:ViewStateData Id="Sequence_18" sap:VirtualizedContainerService.HintSize="336,361">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="LogMessage_31" sap:VirtualizedContainerService.HintSize="314,91" />
-      <sap2010:ViewStateData Id="If_7" sap:VirtualizedContainerService.HintSize="675,509" />
-      <sap2010:ViewStateData Id="UiElementExists_8" sap:VirtualizedContainerService.HintSize="675,106" />
+      <sap2010:ViewStateData Id="UiElementExists_2" sap:VirtualizedContainerService.HintSize="675,106" />
       <sap2010:ViewStateData Id="LogMessage_18" sap:VirtualizedContainerService.HintSize="314,91" />
       <sap2010:ViewStateData Id="Click_5" sap:VirtualizedContainerService.HintSize="314,106" />
       <sap2010:ViewStateData Id="Sequence_8" sap:VirtualizedContainerService.HintSize="336,361">
@@ -626,7 +584,6 @@
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
@@ -731,23 +688,16 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="TryCatch_2" sap:VirtualizedContainerService.HintSize="675,1595">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TryCatch_2" sap:VirtualizedContainerService.HintSize="675,1595" />
       <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="675,60" />
-      <sap2010:ViewStateData Id="Sequence_11" sap:VirtualizedContainerService.HintSize="697,4312">
+      <sap2010:ViewStateData Id="Sequence_11" sap:VirtualizedContainerService.HintSize="697,3617">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="DoWhile_1" sap:VirtualizedContainerService.HintSize="723,4474">
+      <sap2010:ViewStateData Id="DoWhile_1" sap:VirtualizedContainerService.HintSize="723,3779">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -758,7 +708,7 @@
       <sap2010:ViewStateData Id="Throw_2" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="If_5" sap:VirtualizedContainerService.HintSize="723,208" />
       <sap2010:ViewStateData Id="LogMessage_5" sap:VirtualizedContainerService.HintSize="723,91" />
-      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="745,6613">
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="745,5918">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -766,7 +716,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="RegisterItemSiebel_1" sap:VirtualizedContainerService.HintSize="785,6693" />
+      <sap2010:ViewStateData Id="RegisterItemSiebel_1" sap:VirtualizedContainerService.HintSize="785,5998" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>

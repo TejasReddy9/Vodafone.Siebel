@@ -58,95 +58,418 @@
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>UiPath.Studio.Plugin.Workflow</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="_Test" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="nUMEROpRATICA" />
-      <Variable x:TypeArguments="x:Boolean" Name="existRecordSelezionatoModificato" />
+      <Variable x:TypeArguments="x:Boolean" Name="errorPopUP" />
+      <Variable x:TypeArguments="x:Int32" Default="0" Name="count" />
     </Sequence.Variables>
-    <ui:CommentOut DisplayName="Comment Out" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+    <While Condition="[count &lt; 10]">
+      <Sequence>
+        <ui:ClickImage ContinueOnError="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="3000" DisplayName="Click Image 'Internet Explorer.exe'" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False">
+          <ui:ClickImage.CursorPosition>
+            <ui:CursorPosition Position="Center">
+              <ui:CursorPosition.OffsetX>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:CursorPosition.OffsetX>
+              <ui:CursorPosition.OffsetY>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:CursorPosition.OffsetY>
+            </ui:CursorPosition>
+          </ui:ClickImage.CursorPosition>
+          <ui:ClickImage.Image>
+            <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAF8AAAATCAYAAAD21tHiAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGaSURBVFhH7ZVBkoQgDEW5FufhOlzHq7jsa7jMCCQQYkSlnaIX/KrUjIqfnzeRMTA1TBP+QE34AzXhD9SEP1B98BcHxhgwbsEbUz1qwyfIrKxffwz+Ai5mc/tvSau3Jasm1lfdwtGryx91te4efAn5x+FfaXFhPZb1UNDcg/+W3oHPJqlq6OPBxmubfsbam+DrefNnPnSf++CzCmQs5q8NR87kwNmw3oL/pEeal2v6e/DRg31BOeuer5Vj18NjB4NyU2wmf1r4LF5Tozg19BlSGGo2XrZ8aD8BPNkok8nzCfGj4Hgs3Jx87i/2qrI1cgR9PfkZqKzwTp6yBE02y4M2fVoNXsGptOKk4hCJfKrXpT9/Tv649jRH0mvwy/QwdcBXfUSObvh0X6lTrxv+lN15/es95EB9f+bnhnhg1AP4TR+Roxc+vcf/wJQpre2Dn/uMVf6HnOUgPTzzMXhzc7buCfygMx+xn3wvA4y1Q1KbJogMTlDeM8E9eGn3FH/KVO2p5ihqw5/6V034AzXhD5TZtg1mjakJf1ht8AfOl4dGx0amSAAAAABJRU5ErkJggg==" />
+          </ui:ClickImage.Image>
+          <ui:ClickImage.Target>
+            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" Selector="&lt;html app='internet explorer.exe' isremoteapp='1' title='Siebel Call Center IAT 415' /&gt;" WaitForReady="INTERACTIVE" />
+          </ui:ClickImage.Target>
+          <sap2010:WorkflowViewState.IdRef>ClickImage_2</sap2010:WorkflowViewState.IdRef>
+        </ui:ClickImage>
+        <ui:ClickImage ContinueOnError="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="3000" DisplayName="Click Image 'Internet Explorer.exe'" sap2010:WorkflowViewState.IdRef="ClickImage_1" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False">
+          <ui:ClickImage.CursorPosition>
+            <ui:CursorPosition Position="Center">
+              <ui:CursorPosition.OffsetX>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:CursorPosition.OffsetX>
+              <ui:CursorPosition.OffsetY>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:CursorPosition.OffsetY>
+            </ui:CursorPosition>
+          </ui:ClickImage.CursorPosition>
+          <ui:ClickImage.Image>
+            <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEIAAAAcCAYAAADV0GlvAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFvSURBVFhH7ZUxkoMwDEU5214lZa7BMbblCJRpKSlT0rpMSalYXglkIQLOkN3MRn/mTyKBLfkZQxWGAO4AFbiSHATJQZAyEF/n9qMs5SBIDoLkIEgOguQgSO8Dor7CEK5wsq69yFJPgLhAE+LNi6Yxf4Om3sopM4CnQRg1ds4lVQ4iFbnBAHsWvQME+0gQOy1VDOLURgjtBeoe0u9PHpuhSVghQLfIzTvfxPExATUDyPIosTgNaYqtuvNcL3wiBP1FMWtnjByOi7W6bxFz8yKPwKfjp2tl8UqNrDfbUmUgHjZQAMJalJXHJ+bRmBT/AYi0S0r58TgQxLmH7j1BbBU8GATGEgT/l2NS/NsgzMlx1+Ym8AU6nX3yIqfn4VjlcRz0/XyPqiM/35s1Viy1G0Q6FtyYMDYxHY/UMIkb0TndJMfyPpRaiDyWXWvMQdfMGiuWKntZ/jNLOQhSNY4juEcHwXYQ5Owd8clyECQHkQRwB6ptpnixZ8/vAAAAAElFTkSuQmCC" />
+          </ui:ClickImage.Image>
+          <ui:ClickImage.Target>
+            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" Selector="&lt;html app='internet explorer.exe' isremoteapp='1' title='Siebel*' /&gt;" WaitForReady="INTERACTIVE" />
+          </ui:ClickImage.Target>
+        </ui:ClickImage>
+        <Assign>
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">[count]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">[count+1]</InArgument>
+          </Assign.Value>
+          <sap2010:WorkflowViewState.IdRef>Assign_1</sap2010:WorkflowViewState.IdRef>
+        </Assign>
+        <sap2010:WorkflowViewState.IdRef>Sequence_10</sap2010:WorkflowViewState.IdRef>
+      </Sequence>
+      <sap2010:WorkflowViewState.IdRef>While_1</sap2010:WorkflowViewState.IdRef>
+    </While>
+    <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+      <ui:Click.CursorPosition>
+        <ui:CursorPosition Position="Center">
+          <ui:CursorPosition.OffsetX>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetX>
+          <ui:CursorPosition.OffsetY>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetY>
+        </ui:CursorPosition>
+      </ui:Click.CursorPosition>
+      <ui:Click.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+      </ui:Click.Target>
+    </ui:Click>
+    <ui:CommentOut DisplayName="Comment Out" sap2010:WorkflowViewState.IdRef="CommentOut_7">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_4">
-          <Sequence sap2010:Annotation.AnnotationText="selettore per dentificare nuovo messaggio d'errore lanciato da siebel in create order. Non cancellare questa sequence!!!!!!" DisplayName="NON RIMUOVERE QUESTA SEQUENCE" sap2010:WorkflowViewState.IdRef="Sequence_3">
-            <ui:UiElementExists DisplayName="Element Exists 'dialog  Siebel'" Exists="[existRecordSelezionatoModificato]" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
-              <ui:UiElementExists.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="7fc66e45a68052f688179548e402d47f" Selector="&lt;wnd app='internet explorer.exe' cls='#32770' isremoteapp='1' title='Siebel' /&gt;&lt;wnd title='Il record selezionato è stato modificato da un altro utente dopo*' aaname='Il record selezionato è stato modificato da un altro utente dopo il recupero.  Continuare.(SBL-DAT-00523) ' /&gt;" TimeoutMS="5000" WaitForReady="INTERACTIVE" />
-              </ui:UiElementExists.Target>
-            </ui:UiElementExists>
-            <If Condition="[existRecordSelezionatoModificato]" sap2010:WorkflowViewState.IdRef="If_1">
-              <If.Then>
-                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_2">
-                  <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;new pop up in siebel create order found&quot;]" />
-                  <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Button OK'" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
-                    <ui:Click.CursorPosition>
-                      <ui:CursorPosition Position="Center">
-                        <ui:CursorPosition.OffsetX>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:CursorPosition.OffsetX>
-                        <ui:CursorPosition.OffsetY>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:CursorPosition.OffsetY>
-                      </ui:CursorPosition>
-                    </ui:Click.CursorPosition>
-                    <ui:Click.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="882f7caa581c956676098dbdf39be3de" Selector="&lt;wnd app='internet explorer.exe' cls='#32770' isremoteapp='1' title='Siebel' /&gt;&lt;wnd title='OK' aaname='OK' /&gt;" TimeoutMS="30000" WaitForReady="INTERACTIVE" />
-                    </ui:Click.Target>
-                  </ui:Click>
-                  <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;ok button clicked. Start insert again id pratica and signature date&quot;]" />
-                  <ui:Comment sap2010:WorkflowViewState.IdRef="Comment_1" Text="// inserire nuovamente numero pratica appena creata e data firma" />
-                </Sequence>
-              </If.Then>
-              <If.Else>
-                <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;new siebel pop up did not appear. Continue with Assign Address&quot;]" />
-              </If.Else>
-            </If>
-          </Sequence>
+        <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CreateConvergentGroup workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="CreateConvergentGroup.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:Int32" x:Key="TimeOutS">30000</InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="TimeOutM">60000</InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="TimeOutL">120000</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="NumeroMobileConvergenza">3458519461</InArgument>
+              <OutArgument x:TypeArguments="x:Boolean" x:Key="Reject" />
+              <InArgument x:TypeArguments="x:String" x:Key="ID">12</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
         </Sequence>
       </ui:CommentOut.Body>
     </ui:CommentOut>
-    <sads:DebugSymbol.Symbol>d0hDOlxVc2Vyc1xGRkVSUjA3XERvY3VtZW50c1xWRi1hUlBBLVByb2plY3RcMDEuUFJFXExpYnNcU2llYmVsXF9UZXN0LnhhbWwCPwNtDgIBAUQFaxUCAQI=</sads:DebugSymbol.Symbol>
+    <ui:CommentOut DisplayName="Comment Out" sap2010:WorkflowViewState.IdRef="CommentOut_6">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CreateOrderAssignAddress workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="CreateOrderAssignAddress.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:Int32" x:Key="TimeoutLong" />
+              <InArgument x:TypeArguments="x:Int32" x:Key="TimeoutMedium" />
+              <InArgument x:TypeArguments="x:Int32" x:Key="TimeoutShort" />
+              <OutArgument x:TypeArguments="x:String" x:Key="NumberOrder" />
+              <InArgument x:TypeArguments="x:String" x:Key="Comune" />
+              <InArgument x:TypeArguments="x:String" x:Key="Provincia" />
+              <InArgument x:TypeArguments="x:String" x:Key="Frazione" />
+              <InArgument x:TypeArguments="x:String" x:Key="CAP" />
+              <InArgument x:TypeArguments="x:String" x:Key="Indirizzo" />
+              <InArgument x:TypeArguments="x:String" x:Key="Civico" />
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CustomerDataEntryNoDictionary workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="CustomerDataEntryNoDictionary.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:Int32" x:Key="TimeOutS">30000</InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="TimeOutM">60000</InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="TimeOutL">120000</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_RagioneSociale">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_PartivaIVA">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_FormaGiuridica">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_DomicilioFiscaleSedeLegale">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_NumeroCivico">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_Country">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_District">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_ZipCode">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_Tel">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_Email">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_NameDelegato">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_SurnameDelegato">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_SexDelegato">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_FiscalCodeDelegato">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_BirthDateDelegato">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_BirthCityDelegato">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_BirthCountryDelegato">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_DocumentTypeDelegato">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_IdNumberDocumentDelegato">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_City">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_Name">Federico</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_Surname">Montorsi</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_Sex">M</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_FiscalCode">MNTFRC92P07E734G</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_BirthCity">Luino</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_BirthDate">07/09/1992</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_TypeDocument">Patente</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_IdNumberDocument">VA5381462P</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_AddressRue">via Monte Lungo</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_CivicNumber">10</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_City">Milano</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_Country">MI</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_District">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_ZipCode">20125</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_MobilePhoneNumber">3341234567</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_Email">test@test.com</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_LandlinePhoneNumber">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_PrefixNumber">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_LandlinePhoneNumberWithoutPrefix">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <ui:UiElementExists DisplayName="Element Exists 'dialog  Siebel'" Exists="[errorPopUP]" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+            <ui:UiElementExists.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="b327f7a84b7cea4f88eea6f4768098d3" Selector="&lt;wnd app='internet explorer.exe' cls='#32770' isremoteapp='1' title='*' /&gt;&lt;ctrl name='Siebel' role='dialog' /&gt;" TimeoutMS="10000" WaitForReady="INTERACTIVE" />
+            </ui:UiElementExists.Target>
+          </ui:UiElementExists>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <If Condition="[errorPopUP]" sap2010:WorkflowViewState.IdRef="If_1">
+            <If.Then>
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Button'" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                  <ui:Click.CursorPosition>
+                    <ui:CursorPosition Position="Center">
+                      <ui:CursorPosition.OffsetX>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:CursorPosition.OffsetX>
+                      <ui:CursorPosition.OffsetY>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:CursorPosition.OffsetY>
+                    </ui:CursorPosition>
+                  </ui:Click.CursorPosition>
+                  <ui:Click.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="0c5a42fa9f7f8b5abef9e597946a58d4" Selector="&lt;wnd app='internet explorer.exe' cls='#32770' isremoteapp='1' title='*' /&gt;&lt;wnd title='OK' /&gt;" WaitForReady="INTERACTIVE" />
+                  </ui:Click.Target>
+                </ui:Click>
+                <Throw Exception="[New BusinessRuleException(&quot;Pop up: Failed on inserting new client data&quot;)]" sap2010:WorkflowViewState.IdRef="Throw_1" />
+              </Sequence>
+            </If.Then>
+          </If>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke FindInSiebelByCForPIVATabClienti workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="FindInSiebelByCForPIVATabClienti.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="FiscalCode">BGARLA75E19Z129Z</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="ClientCode" />
+              <OutArgument x:TypeArguments="x:Boolean" x:Key="ClientExist" />
+              <InArgument x:TypeArguments="x:Int32" x:Key="TimeOutS">30000</InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="TimeOutM">60000</InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="TimeOutL">120000</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CustomerDataEntryNoDictionary workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="CustomerDataEntryNoDictionary.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:Int32" x:Key="TimeOutS">30000</InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="TimeOutM">60000</InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="TimeOutL">120000</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_RagioneSociale" />
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_PartivaIVA" />
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_FormaGiuridica" />
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_DomicilioFiscaleSedeLegale" />
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_NumeroCivico" />
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_Country" />
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_District" />
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_ZipCode" />
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_Tel" />
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_Email" />
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_NameDelegato" />
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_SurnameDelegato" />
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_SexDelegato" />
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_FiscalCodeDelegato" />
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_BirthDateDelegato" />
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_BirthCityDelegato" />
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_BirthCountryDelegato" />
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_DocumentTypeDelegato" />
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_IdNumberDocumentDelegato" />
+              <InArgument x:TypeArguments="x:String" x:Key="PIVA_City" />
+              <InArgument x:TypeArguments="x:String" x:Key="CF_Name">Lucia</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_Surname">Tunesi</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_Sex">F</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_FiscalCode">TNSLCU92E63A010T</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_BirthCity">Abbiategrasso</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_BirthDate">23/05/1992</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_TypeDocument">Passaporto</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_IdNumberDocument">AA1234567</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_AddressRue">via vittorio veneto</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_CivicNumber">43</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_City">Milano</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_Country">MI</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_District" />
+              <InArgument x:TypeArguments="x:String" x:Key="CF_ZipCode">20124</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_MobilePhoneNumber">3401234567</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_Email">test@test.it</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_LandlinePhoneNumber">029021234</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_PrefixNumber">02</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="CF_LandlinePhoneNumberWithoutPrefix">9021234</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <sads:DebugSymbol.Symbol>dz1DOlxVc2Vyc1xWRElMQVVSXERvY3VtZW50c1xDT1BTXDAxLlBSRVxMaWJzXFNpZWJlbFxfVGVzdC54YW1sGEAD/wIOAgEBQzNDNgIBAkUFeA0CAQt5BYcBEAIBCogBBZcBFQIBCZgBBasBFQIBCKwBBY8CFQIBB5ACBZoCFQIBBpsCBbYCFQIBBbcCBckCFQIBBMoCBf0CFQIBA0YHdhICAQ5FFkUnAgEMRwlZGQIBGVoJaxkCARRsCXQSAgEPR2tHcQIBG1ZjVsIBAgEdUzdTPAIBHFprWnECARZpY2mvAQIBGGY3ZjwCARdxM3E8AgESbjRuOwIBEA==</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
-      <sap2010:ViewStateData Id="UiElementExists_1" sap:VirtualizedContainerService.HintSize="675,106" />
-      <sap2010:ViewStateData Id="LogMessage_1" sap:VirtualizedContainerService.HintSize="314,91" />
+      <sap2010:ViewStateData Id="ClickImage_2" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="ClickImage_1" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="314,60" />
+      <sap2010:ViewStateData Id="Sequence_10" sap:VirtualizedContainerService.HintSize="336,476">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="While_1" sap:VirtualizedContainerService.HintSize="464,634" />
+      <sap2010:ViewStateData Id="Click_2" sap:VirtualizedContainerService.HintSize="464,68" />
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_5" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="336,211">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CommentOut_7" sap:VirtualizedContainerService.HintSize="464,289" />
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_4" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="Sequence_8" sap:VirtualizedContainerService.HintSize="336,211">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CommentOut_6" sap:VirtualizedContainerService.HintSize="464,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_3" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="Sequence_7" sap:VirtualizedContainerService.HintSize="336,211">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CommentOut_5" sap:VirtualizedContainerService.HintSize="464,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="UiElementExists_1" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="336,230">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CommentOut_3" sap:VirtualizedContainerService.HintSize="464,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="Click_1" sap:VirtualizedContainerService.HintSize="314,106" />
-      <sap2010:ViewStateData Id="LogMessage_2" sap:VirtualizedContainerService.HintSize="314,91" />
-      <sap2010:ViewStateData Id="Comment_1" sap:VirtualizedContainerService.HintSize="314,74" />
-      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="336,606">
+      <sap2010:ViewStateData Id="Throw_1" sap:VirtualizedContainerService.HintSize="314,22" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="336,292">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="LogMessage_3" sap:VirtualizedContainerService.HintSize="314,91" />
-      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="675,754">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="200,138">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="222,262">
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="464,439" />
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="486,563">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="CommentOut_1" sap:VirtualizedContainerService.HintSize="200,51">
+      <sap2010:ViewStateData Id="CommentOut_4" sap:VirtualizedContainerService.HintSize="464,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -154,14 +477,53 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="222,175">
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_1" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="336,211">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="_Test_1" sap:VirtualizedContainerService.HintSize="262,255" />
+      <sap2010:ViewStateData Id="CommentOut_1" sap:VirtualizedContainerService.HintSize="464,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_2" sap:VirtualizedContainerService.HintSize="314,87">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="336,211">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CommentOut_2" sap:VirtualizedContainerService.HintSize="464,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="486,1741">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="_Test_1" sap:VirtualizedContainerService.HintSize="526,1861" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>
